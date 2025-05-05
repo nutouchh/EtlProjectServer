@@ -168,8 +168,8 @@ DJOSER = {
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'YCAJEYrchFDG6_zY_jCuL7Isk'
-AWS_SECRET_ACCESS_KEY = 'YCP8Bftft3p7LvS3KtOF8Ky4TU4Kzxw6q7sP_Rh0'
+AWS_ACCESS_KEY_ID = '123'
+AWS_SECRET_ACCESS_KEY = '123'
 AWS_STORAGE_BUCKET_NAME = 'etlsystem'
 
 AWS_S3_ENDPOINT_URL = 'https://storage.yandexcloud.net'  # важно для Yandex
