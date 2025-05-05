@@ -1,0 +1,55 @@
+{
+"product": {
+        "description": "Перечень ключевых слов для определения столбца с номенклатурой",
+        "items": ["крем", "шампунь", "пенка", "гель", "мл", "молочко", "детский", "масло", "помада", "мыло", "бальзам", "зуб", "спрей", "ополаскиватель", "порошок"]
+    },
+"INN": {
+        "description": "Перечень возможных значений ИНН для определения столбца",
+        "len": [10, 12],
+        "items": ["инн", "inn"]
+    },
+"client": {
+        "description": "Перечень возможных значений для определения столбца с клиентом",
+        "items": ["ип", "ооо"]
+    },
+"address": {
+        "description": "Перечень возможных значений для определения столбца с адресом",
+        "items": ["г", "ул", "дом", "п", "пр-кт", "с"]
+    },
+"region": {
+        "description": "Перечень возможных значений для определения столбца с областью",
+        "items": ["обл", "область", "респ", "республика", "край"]
+    },
+"city": {
+        "description": "Перечень возможных значений для определения столбца с городом",
+        "items": ["г", "п", "с", "ст-ца", "пгт"]
+    },
+"street": {
+        "description": "Перечень возможных значений для определения столбца с городом",
+        "items": ["ул", "дом", "д", "улица", "пр-кт"]
+    },
+"barcode": {
+        "description": "Перечень возможных длин штрихкода для определения столбца",
+        "items": [13, 14]
+    },
+"quantity": {
+        "description": "Перечень ключевых слов для определения столбца с количеством шт",
+        "items": ["количество", "кол-во", "Количество, шт", "Количество", "отгруж_шт", "Кол-во", "Отгрузка, в шт"]
+    },
+"sales_in_money": {
+        "description": "Перечень ключевых слов для определения столбца с суммой в руб",
+        "items": ["Сумма", "Сумма*", "fотгруж_руб", "Сумма со скидкой", "Отгрузка, руб в прайс листе дистрибьютора, без НДС", "Сумма(расх.), руб."]
+    },
+"columns_config": [
+    {"new_column": "Название продукта", "function": "find_most_matches_column", "config_key": ["product"]},
+    {"new_column": "Отгрузка, шт", "function": "find_header", "config_key": ["quantity"]},
+    {"new_column": "Отгрузка, руб", "function": "find_header", "config_key": ["sales_in_money"]},
+    {"new_column": "Клиент", "function": "find_most_matches_column", "config_key": ["client"]},
+    {"new_column": "ИНН клиента", "function": "find_most_matches_header", "config_key": ["INN"]},
+    {"new_column": "Адрес полностью", "function": "find_word_matches_column", "config_key": ["address"]},
+    {"new_column": "Штрихкод продукта", "function": "find_numeric_column_with_length_matches", "config_key": ["barcode"]},
+    {"new_column": "Область/Край", "function": "find_filtered_word_matches_column", "config_key":["region", "address"]},
+    {"new_column": "Город", "function": "find_filtered_word_matches_column", "config_key":["city", "street"]},
+    {"new_column": "Улица, номер дома", "function": "find_filtered_word_matches_column", "config_key":["street", "city"]}
+  ]
+}
